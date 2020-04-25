@@ -76,7 +76,7 @@ class PDFWindow extends BrowserWindow {
       if (isit) {
         super.loadURL(`file://${
           path.join(__dirname, 'pdfjs', 'web', 'viewer.html')}?file=${
-            decodeURIComponent(url)}`, options)
+            encodeURIComponent(url)}`, options)
       } else {
         super.loadURL(url, options)
       }
@@ -102,7 +102,7 @@ PDFWindow.addSupport = function (browserWindow) {
     isPDF(url).then(isit => {
       if (isit) {
         load.call(browserWindow, `file://${PDF_JS_PATH}?file=${
-          decodeURIComponent(url)}`, options)
+          encodeURIComponent(url)}`, options)
       } else {
         load.call(browserWindow, url, options)
       }
